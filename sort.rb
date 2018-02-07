@@ -6,8 +6,9 @@ class Sort
     limit1 = array.length - 1
     limit2 = array.length - 2
     swapped = false
+
     for i in 0..limit1 
-      for j in 0..limit2
+      for j in 0..limit2 - i
         if array[j] > array[j+1]
           # Swap
           array[j],array[j+1] = array[j+1],array[j]
@@ -37,7 +38,11 @@ class Sort
     recursive_bubble_sort(array, len - 1)
   end
 
+  def self.selection_sort(array)
+
+  end
+
 end
 
-puts Sort.bubble_sort([5,4,3,2,1])
+puts Sort.bubble_sort([5,4,5,2,1])
 puts Sort.recursive_bubble_sort([5,4,3,2,1],5)
