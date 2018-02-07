@@ -54,7 +54,6 @@ class Sort
       end
       if swap
         # If min_idx changed then swap
-        print i,min_idx
         array[i], array[min_idx] = array[min_idx], array[i]
       end
     end
@@ -62,8 +61,36 @@ class Sort
 
   end
 
+  def self.recursive_selection_sort(array, len)
+    # Base case (to stop recursion)
+    if len == 1
+      puts array
+      return
+    end
+    
+    swap = false
+    max_idx = 0
+    for i in 1..len - 1
+      if array[i] > array[max_idx]
+        max_idx = i
+        swap = true
+      end
+    end
+    if swap
+      # If min_idx changed then swap
+      array[len-1], array[max_idx] = array[max_idx], array[len-1]
+    end
+
+    # Largest element is out 
+    # Recursion until array length > 1
+    recursive_selection_sort(array, len - 1)
+  end
+
 end
 
-puts Sort.bubble_sort([5,4,5,2,1])
-puts Sort.recursive_bubble_sort([5,4,3,2,1],5)
-Sort.selection_sort([1,2,3,4,5])
+array = [5,3,4,2,1]
+puts Sort.bubble_sort(array)
+puts Sort.recursive_bubble_sort(array,array.length)
+puts Sort.selection_sort(array)
+puts Sort.recursive_selection_sort(array, array.length)
+
