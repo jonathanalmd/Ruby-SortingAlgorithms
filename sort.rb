@@ -84,26 +84,28 @@ class Sort
     # Largest element is out 
     # Recursion until array length > 1
     recursive_selection_sort(array, len - 1)
+    
   end
 
 
   def self.insertion_sort(array)
     limit = array.length - 1
     for i in 1..limit
-      # store value 
-      flag = array[i]
+      # store key value 
+      aux = array[i]
       j = i - 1
 
       # move sorted elements
-      while j >= 0 and array[j] > flag
+      while j >= 0 and array[j] > aux
         array[j+1] = array[j]
         j -= 1
       end
       # update array using the stored value
-      array[j+1] = flag
+      array[j+1] = aux
 
     end
     puts array
+
   end
 
   def self.insertion_sort2(array)
@@ -118,7 +120,32 @@ class Sort
       end
     end
     puts array
+
   end
+
+  def self.recursive_insertion_sort(array, len)
+    # Base case (to stop recursion)
+    if len == 1
+      puts array
+      return
+    end
+    # recursive call until len == 1
+    recursive_insertion_sort(array, len - 1)
+
+    # store key value (last element)
+    aux = array[len-1]
+    j = len - 2
+
+    # move sorted elements
+    while j >= 0 and array[j] > aux
+      array[j+1] = array[j]
+      j -= 1
+    end
+    # update array using the stored value
+    array[j+1] = aux
+
+  end
+
 end
 
 array = [5,3,4,2,1]
@@ -129,3 +156,4 @@ puts Sort.selection_sort(array)
 puts Sort.recursive_selection_sort(array, array.length)
 puts Sort.insertion_sort(array)
 puts Sort.insertion_sort2(array)
+puts Sort.recursive_insertion_sort(array, array.length)
