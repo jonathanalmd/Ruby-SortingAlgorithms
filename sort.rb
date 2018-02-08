@@ -86,11 +86,46 @@ class Sort
     recursive_selection_sort(array, len - 1)
   end
 
+
+  def self.insertion_sort(array)
+    limit = array.length - 1
+    for i in 1..limit
+      # store value 
+      flag = array[i]
+      j = i - 1
+
+      # move sorted elements
+      while j >= 0 and array[j] > flag
+        array[j+1] = array[j]
+        j -= 1
+      end
+      # update array using the stored value
+      array[j+1] = flag
+
+    end
+    puts array
+  end
+
+  def self.insertion_sort2(array)
+    # easier to understand 
+    limit = array.length - 1
+    for i in 1..limit
+      for j in 0..i-1
+        if array[i] < array[j]
+          array.insert(j,array[i])
+          array.delete(i)
+        end
+      end
+    end
+    puts array
+  end
 end
 
 array = [5,3,4,2,1]
+array = [1,2,3,4,5]
 puts Sort.bubble_sort(array)
 puts Sort.recursive_bubble_sort(array,array.length)
 puts Sort.selection_sort(array)
 puts Sort.recursive_selection_sort(array, array.length)
-
+puts Sort.insertion_sort(array)
+puts Sort.insertion_sort2(array)
