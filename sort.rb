@@ -1,5 +1,4 @@
 
-
 class Sort
 
   def self.bubble_sort(array)
@@ -17,15 +16,13 @@ class Sort
       end
       break if !swapped
     end
-    puts array
-
+    return array
   end
 
   def self.recursive_bubble_sort(array, len)
     # Base case (to stop recursion)
     if len == 1
-      puts array
-      return
+      return array
     end
     limit = len - 2
     for i in 0..limit 
@@ -57,34 +54,30 @@ class Sort
         array[i], array[min_idx] = array[min_idx], array[i]
       end
     end
-    puts array
+    return array
 
   end
 
   def self.recursive_selection_sort(array, len)
     # Base case (to stop recursion)
     if len == 1
-      puts array
-      return
+      return array
     end
     
     swap = false
     max_idx = 0
     for i in 1..len - 1
+      print i
       if array[i] > array[max_idx]
         max_idx = i
-        swap = true
       end
     end
-    if swap
-      # If min_idx changed then swap
-      array[len-1], array[max_idx] = array[max_idx], array[len-1]
-    end
+    # swap
+    array[len-1], array[max_idx] = array[max_idx], array[len-1]
 
     # Largest element is out 
     # Recursion until array length > 1
     recursive_selection_sort(array, len - 1)
-    
   end
 
 
@@ -104,7 +97,7 @@ class Sort
       array[j+1] = aux
 
     end
-    puts array
+    return array
 
   end
 
@@ -119,15 +112,14 @@ class Sort
         end
       end
     end
-    puts array
+    return array
 
   end
 
   def self.recursive_insertion_sort(array, len)
     # Base case (to stop recursion)
     if len == 1
-      puts array
-      return
+      return 
     end
     # recursive call until len == 1
     recursive_insertion_sort(array, len - 1)
@@ -144,16 +136,12 @@ class Sort
     # update array using the stored value
     array[j+1] = aux
 
+    return array
+
+  end
+
+  def self.quicksort(array)
+
   end
 
 end
-
-array = [5,3,4,2,1]
-array = [1,2,3,4,5]
-puts Sort.bubble_sort(array)
-puts Sort.recursive_bubble_sort(array,array.length)
-puts Sort.selection_sort(array)
-puts Sort.recursive_selection_sort(array, array.length)
-puts Sort.insertion_sort(array)
-puts Sort.insertion_sort2(array)
-puts Sort.recursive_insertion_sort(array, array.length)
